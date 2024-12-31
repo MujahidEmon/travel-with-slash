@@ -1,15 +1,42 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../../Components/Navbar/Navbar";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
+
+  const {createEmailUser} = useContext(AuthContext)
   const [showPass, setShowPass] = useState(false);
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const handleRegister = (e) =>{
+    e.preventDefault(); 
+    const form = new FormData(e.currentTarget)
+    const email = form.get('email')
+    const name = form.get('name')
+    const password = form.get('password')
+    createEmailUser(email, password)
+    .then(result => {
+      console.log(result.user)
+      updateProfile(result.user , {
+        displayName: name
+      })
+      .then()
+      .catch()
+      navigate(location?.state ? location.state : '/')
+    })
+    .catch(error => console.error(error)
+    )
+
+  }
   return (
     <>
       <Navbar></Navbar>
       <div className="flex border-2 mt-6 bg-base-100 rounded-lg max-w-xl mx-auto  font-montserrat justify-center ">
-        <form className="max-w-lg w-full px-6 py-8 mx-auto">
+        <form onSubmit={handleRegister} className="max-w-lg w-full px-6 py-8 mx-auto">
           <div className="mb-6">
             <h3 className="text-gray-800 text-2xl font-bold">Register</h3>
           </div>
@@ -20,7 +47,7 @@ const Register = () => {
               </label>
               <div className="relative flex items-center">
                 <input
-                  name="email"
+                  name="name"
                   type="text"
                   required
                   className="w-full text-sm text-gray-800 border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
@@ -35,7 +62,7 @@ const Register = () => {
               <div className="relative flex items-center">
                 <input
                   name="email"
-                  type="text"
+                  type="email"
                   required
                   className="w-full text-sm text-gray-800 border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
                   placeholder="Enter email"
@@ -119,8 +146,8 @@ const Register = () => {
 
             <div className="mt-6">
               <button
-                type="button"
-                className="w-full font-bold py-2.5 px-4 text-sm tracking-wide rounded-md text-white bg-[#F9A51A]"
+               
+                className="w-full btn font-bold py-2.5 px-4 text-sm tracking-wide rounded-md text-white bg-[#F9A51A]"
               >
                 Register Now
               </button>
