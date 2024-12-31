@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Sunset Paradise Hotel",
+        "apartmentType": "Deluxe Suite",
+        "guests": 2,
+        "beds": 1,
+        "bathrooms": 1,
+        "kitchenType": "Fully Equipped",
+        "rating": 4.8,
+        "costPerNight": 120,
+        "imageUrl": "https://i.ibb.co.com/2jtJrtL/Rectangle-28.png",
+        "cancellationFlexibility": "Free cancellation up to 24 hours before check-in",
+        "numberOfReviews": 320
+    },
+    {
+        "id": 2,
+        "name": "Urban Stay Apartments",
+        "apartmentType": "Studio Apartment",
+        "guests": 2,
+        "beds": 1,
+        "bathrooms": 1,
+        "kitchenType": "Kitchenette",
+        "rating": 4.5,
+        "costPerNight": 85,
+        "imageUrl": "https://i.ibb.co.com/zQdqt3V/Rectangle-27.png",
+        "cancellationFlexibility": "Partial refund available up to 48 hours before check-in",
+        "numberOfReviews": 150
+    },
+    {
+        "id": 3,
+        "name": "Oceanview Retreat",
+        "apartmentType": "Family Suite",
+        "guests": 4,
+        "beds": 2,
+        "bathrooms": 2,
+        "kitchenType": "Fully Equipped",
+        "rating": 4.9,
+        "costPerNight": 200,
+        "imageUrl": "https://i.ibb.co.com/MnQ9bMT/Rectangle-26.png",
+        "cancellationFlexibility": "Free cancellation up to 72 hours before check-in",
+        "numberOfReviews": 500
+    }
+]
